@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QL_CUAHANGLINHKIENMAYTINH" Class="QLLKDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ADMIN\SQLEXPRESS;Initial Catalog=QL_CUAHANGLINHKIENMAYTINH;Persist Security Info=True;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="QL_CUAHANGLINHKIENMAYTINHConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.View_GioHang" Member="View_GioHangs">
+    <Type Name="View_GioHang">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTienHoaDon" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayLapHoaDon" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_BieuMauGio" Member="View_BieuMauGios">
+    <Type Name="View_BieuMauGio">
+      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTienHoaDon" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="NgayLapHoaDon" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Anh" Member="View_Anhs">
+    <Type Name="View_Anh">
+      <Column Name="KetQua" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Anh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

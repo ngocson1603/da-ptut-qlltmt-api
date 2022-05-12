@@ -7,22 +7,22 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class GioHangController : ApiController
+    public class KhachHangController : ApiController
     {
         [HttpGet]
-        public List<View_GioHang> GetGioLists()
+        public List<KhachHang> GetKhoaLists()
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_GioHangs.ToList();
+            return db.KhachHangs.ToList();
         }
 
         [HttpGet]
-        public List<View_GioHang> GetGio(string id)
+        public KhachHang GetKhoa(string id)
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_GioHangs.Where(t => t.Gmail.Equals(id)).ToList();
+            return db.KhachHangs.FirstOrDefault(t => t.Gmail.Equals(id));
         }
     }
 }
