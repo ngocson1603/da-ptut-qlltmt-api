@@ -2,16 +2,16 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="QLLK">
   <DataContextMoniker Name="/QLLKDataContext" />
   <nestedChildShapes>
-    <classShape Id="5ad8eabd-26b4-462f-8323-8575b6e15b9c" absoluteBounds="3, 3.5, 2, 2.3478011067708335">
+    <classShape Id="5ad8eabd-26b4-462f-8323-8575b6e15b9c" absoluteBounds="3.125, 3.5, 2, 2.3478011067708335">
       <DataClassMoniker Name="/QLLKDataContext/View_GioHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="248e6797-4956-46f4-a13c-8e521bd40b23" absoluteBounds="3.015, 3.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="248e6797-4956-46f4-a13c-8e521bd40b23" absoluteBounds="3.14, 3.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="26bf69ea-d2d5-4e03-8e0a-f606fce9ed6d" absoluteBounds="5.5, 2.125, 2, 2.1554996744791666">
+    <classShape Id="26bf69ea-d2d5-4e03-8e0a-f606fce9ed6d" absoluteBounds="3.875, 0.75, 2, 2.1554996744791666">
       <DataClassMoniker Name="/QLLKDataContext/KhachHang" />
       <nestedChildShapes>
-        <elementListCompartment Id="f502697a-0a43-42fa-9626-0379ff8827a3" absoluteBounds="5.5150000000000006, 2.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="f502697a-0a43-42fa-9626-0379ff8827a3" absoluteBounds="3.8900000000000006, 1.21, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
     <classShape Id="1b3a3566-9cc1-4196-8208-4205f158233a" absoluteBounds="1.5, 1.125, 2, 1.9631982421875">
@@ -26,5 +26,31 @@
         <elementListCompartment Id="9ca3c820-e8c5-40a8-a198-d5199d33edf7" absoluteBounds="0.64000000000000012, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="1fc7d4e0-5a24-47e9-9312-b039f702ea63" absoluteBounds="7.375, 1.125, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/QLLKDataContext/ChiTietHoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1e66bfc9-c7a6-4ab7-979c-cad542b04797" absoluteBounds="7.39, 1.585, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.875 : 2.01524983723958); (7.375 : 2.01524983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLLKDataContext/KhachHang/KhachHang_ChiTietHoaDon" />
+      <nodes>
+        <classShapeMoniker Id="26bf69ea-d2d5-4e03-8e0a-f606fce9ed6d" />
+        <classShapeMoniker Id="1fc7d4e0-5a24-47e9-9312-b039f702ea63" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="baae65d9-721e-4cbd-a4a6-ec8c8bf312d0" absoluteBounds="5.75, 3.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/QLLKDataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f3ac13e-2748-4b47-9e08-db41723c757c" absoluteBounds="5.765, 4.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.625 : 3.875); (6.625 : 2.77527747200521); (7.375 : 2.77527747200521)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/QLLKDataContext/SanPham/SanPham_ChiTietHoaDon" />
+      <nodes>
+        <classShapeMoniker Id="baae65d9-721e-4cbd-a4a6-ec8c8bf312d0" />
+        <classShapeMoniker Id="1fc7d4e0-5a24-47e9-9312-b039f702ea63" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

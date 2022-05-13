@@ -21,6 +21,7 @@
       <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Association Name="KhachHang_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="Gmail" OtherKey="Gmail" Type="ChiTietHoaDon" />
     </Type>
   </Table>
   <Table Name="dbo.View_BieuMauGio" Member="View_BieuMauGios">
@@ -37,6 +38,33 @@
     <Type Name="View_Anh">
       <Column Name="KetQua" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Anh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietHoaDon" Member="ChiTietHoaDons">
+    <Type Name="ChiTietHoaDon">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTienHoaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NgayLapHoaDon" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="KhachHang_ChiTietHoaDon" Member="KhachHang" ThisKey="Gmail" OtherKey="Gmail" Type="KhachHang" IsForeignKey="true" />
+      <Association Name="SanPham_ChiTietHoaDon" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SanPham" Member="SanPhams">
+    <Type Name="SanPham">
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MaNhaPhanPhoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LoaiSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HangSanXuat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="SanPham_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietHoaDon" />
     </Type>
   </Table>
 </Database>
