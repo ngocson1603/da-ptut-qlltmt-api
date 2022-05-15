@@ -88,6 +88,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="BieuMau.cs" />
+    <Compile Include="Controllers\BieuMauGioController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">

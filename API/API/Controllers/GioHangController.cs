@@ -18,7 +18,7 @@ namespace API.Controllers
             var query = from c in chitiet
                         join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table1
                         from sp in table1.DefaultIfEmpty()
-                        select new LayGio { maHoaDon = c.MaHoaDon,maSanPham = c.MaSanPham,gmail = c.Gmail,soluong=c.SoLuong,tongtien = c.TongTien,tongtienhoadon=c.TongTienHoaDon,ngaylaphoadon=c.NgayLapHoaDon,image=sp.Image };
+                        select new LayGio { MaHoaDon = c.MaHoaDon,MaSanPham = c.MaSanPham,Gmail = c.Gmail,SoLuong=c.SoLuong,TongTien = c.TongTien,TongTienHoaDon=c.TongTienHoaDon,NgayLapHoaDon=c.NgayLapHoaDon,Image=sp.Image };
             return Ok(query);
         }
 
@@ -32,8 +32,50 @@ namespace API.Controllers
                         join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table1
                         from sp in table1.DefaultIfEmpty()
                         where c.Gmail == id.ToString()
-                        select new LayGio { maHoaDon = c.MaHoaDon, maSanPham = c.MaSanPham, gmail = c.Gmail, soluong = c.SoLuong, tongtien = c.TongTien, tongtienhoadon = c.TongTienHoaDon, ngaylaphoadon = c.NgayLapHoaDon, image = sp.Image };
+                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = c.MaSanPham, Gmail = c.Gmail, SoLuong = c.SoLuong, TongTien = c.TongTien, TongTienHoaDon = c.TongTienHoaDon, NgayLapHoaDon = c.NgayLapHoaDon, Image = sp.Image };
             return Ok(query);
+        }
+        [HttpPost]
+        public bool InsertNewGio(ChiTietHoaDon cthd)
+        {
+            try
+            {
+                QLLKDataContext db = new QLLKDataContext();
+
+                ChiTietHoaDon ct = new ChiTietHoaDon();
+                ct.MaSanPham = cthd.MaSanPham;
+                ct.Gmail = cthd.Gmail;
+                ct.SoLuong = cthd.SoLuong;
+                ct.TongTien = cthd.TongTien;
+                ct.TongTienHoaDon = cthd.TongTienHoaDon;
+                ct.NgayLapHoaDon = cthd.NgayLapHoaDon;
+
+                db.ChiTietHoaDons.InsertOnSubmit(cthd);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        [HttpDelete]
+        public bool DeleteGio(int id)
+        {
+            try
+            {
+                QLLKDataContext db = new QLLKDataContext();
+                ChiTietHoaDon kh = db.ChiTietHoaDons.Where(t => t.MaHoaDon == id).FirstOrDefault();
+
+                db.ChiTietHoaDons.DeleteOnSubmit(kh);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

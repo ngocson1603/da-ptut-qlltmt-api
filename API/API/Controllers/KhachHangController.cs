@@ -10,19 +10,66 @@ namespace API.Controllers
     public class KhachHangController : ApiController
     {
         [HttpGet]
-        public List<KhachHang> GetKhoaLists()
+        public List<View_KH> GetKhachHangLists()
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.KhachHangs.ToList();
+            return db.View_KHs.ToList();
         }
 
         [HttpGet]
-        public KhachHang GetKhoa(string id)
+        public List<View_KH> GetKhachHang(string id)
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.KhachHangs.FirstOrDefault(t => t.Gmail.Equals(id));
+            return db.View_KHs.Where(t => t.Gmail == id).ToList();
+        }
+
+        [HttpPut]
+        public bool UpdateKhachHang(KhachHang kh, string id)
+        {
+            try
+            {
+                QLLKDataContext db = new QLLKDataContext();
+                KhachHang khs = db.KhachHangs.Where(t => t.Gmail == id).FirstOrDefault();
+                khs.Gmail = kh.Gmail;
+                khs.Pass = kh.Pass;
+                khs.TenKhachHang = kh.TenKhachHang;
+                khs.Ngaysinh = kh.Ngaysinh;
+                khs.GioiTinh = kh.GioiTinh;
+                khs.DiaChi = kh.DiaChi;
+                khs.SDT = kh.SDT;
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        [HttpPost]
+        public bool InsertKhachHang(KhachHang kh)
+        {
+            try
+            {
+                QLLKDataContext db = new QLLKDataContext();
+                KhachHang khs = new KhachHang();
+                khs.Gmail = kh.Gmail;
+                khs.Pass = kh.Pass;
+                khs.TenKhachHang = kh.TenKhachHang;
+                khs.Ngaysinh = kh.Ngaysinh;
+                khs.GioiTinh = kh.GioiTinh;
+                khs.DiaChi = kh.DiaChi;
+                khs.SDT = kh.SDT;
+
+                db.KhachHangs.InsertOnSubmit(kh);
+                db.SubmitChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

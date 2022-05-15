@@ -5,15 +5,13 @@ using System.Web;
 
 namespace API
 {
-    public class LayGio
+    public class BieuMau
     {
-        public int MaHoaDon { get; set; }
-        public int? MaSanPham { get; set; }
-        public string Gmail { get; set; }
+        public string TenSanPham { get; set; }
         public int? SoLuong { get; set; }
         public int? TongTien { get; set; }
         public int? TongTienHoaDon { get; set; }
         public DateTime? NgayLapHoaDon { get; set; }
-        public string Image { get; set; }
+        public string Gmail { get; set; }
     }
 }

@@ -12,18 +12,6 @@
       <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.KhachHang" Member="KhachHangs">
-    <Type Name="KhachHang">
-      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
-      <Association Name="KhachHang_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="Gmail" OtherKey="Gmail" Type="ChiTietHoaDon" />
-    </Type>
-  </Table>
   <Table Name="dbo.View_BieuMauGio" Member="View_BieuMauGios">
     <Type Name="View_BieuMauGio">
       <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
@@ -50,8 +38,8 @@
       <Column Name="TongTienHoaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="NgayLapHoaDon" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="KhachHang_ChiTietHoaDon" Member="KhachHang" ThisKey="Gmail" OtherKey="Gmail" Type="KhachHang" IsForeignKey="true" />
       <Association Name="SanPham_ChiTietHoaDon" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
+      <Association Name="KhachHang_ChiTietHoaDon" Member="KhachHang" ThisKey="Gmail" OtherKey="Gmail" Type="KhachHang" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.SanPham" Member="SanPhams">
@@ -65,6 +53,29 @@
       <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="SanPham_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietHoaDon" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_KH" Member="View_KHs">
+    <Type Name="View_KH">
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="Gmail" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Pass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ngaysinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Association Name="KhachHang_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="Gmail" OtherKey="Gmail" Type="ChiTietHoaDon" />
     </Type>
   </Table>
 </Database>
