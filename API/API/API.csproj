@@ -102,6 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLLK.dbml</DependentUpon>
     </Compile>
+    <Compile Include="ThemGioHang.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
