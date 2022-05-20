@@ -92,6 +92,7 @@
     <Compile Include="Controllers\BieuMauGioController.cs" />
     <Compile Include="Controllers\ChiTietHoaDonSPController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -103,7 +104,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLLK.dbml</DependentUpon>
     </Compile>
-    <Compile Include="ThemGioHang.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

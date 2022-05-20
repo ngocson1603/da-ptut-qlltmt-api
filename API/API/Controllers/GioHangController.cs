@@ -9,31 +9,21 @@ namespace API.Controllers
 {
     public class GioHangController : ApiController
     {
+        
         [HttpGet]
-        public IHttpActionResult GetGioLists()
+        public List<View_CTHD> GetHDLists()
         {
             QLLKDataContext db = new QLLKDataContext();
-            List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<SanPham> sanpham = db.SanPhams.ToList();
-            var query = from c in chitiet
-                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table1
-                        from sp in table1.DefaultIfEmpty()
-                        select new LayGio { MaHoaDon = c.MaHoaDon,MaSanPham = c.MaSanPham,Gmail = c.Gmail,SoLuong=c.SoLuong,TongTien = c.TongTien,TongTienHoaDon=c.TongTienHoaDon,NgayLapHoaDon=c.NgayLapHoaDon,Image=sp.Image };
-            return Ok(query);
+
+            return db.View_CTHDs.ToList();
         }
 
         [HttpGet]
-        public IHttpActionResult GetGioLists(string id)
+        public List<View_CTHD> GetHDListsgio(string id)
         {
             QLLKDataContext db = new QLLKDataContext();
-            List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<SanPham> sanpham = db.SanPhams.ToList();
-            var query = from c in chitiet
-                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table1
-                        from sp in table1.DefaultIfEmpty()
-                        where c.Gmail == id.ToString()
-                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = c.MaSanPham, Gmail = c.Gmail, SoLuong = c.SoLuong, TongTien = c.TongTien, TongTienHoaDon = c.TongTienHoaDon, NgayLapHoaDon = c.NgayLapHoaDon, Image = sp.Image };
-            return Ok(query);
+
+            return db.View_CTHDs.Where(t => t.Gmail == id).ToList();
         }
         [HttpPost]
         public bool InsertNewGio(ChiTietHoaDon cthd)
@@ -43,12 +33,10 @@ namespace API.Controllers
                 QLLKDataContext db = new QLLKDataContext();
 
                 ChiTietHoaDon ct = new ChiTietHoaDon();
-                ct.MaSanPham = cthd.MaSanPham;
+                ct.MaHoaDon = cthd.MaHoaDon;
                 ct.Gmail = cthd.Gmail;
-                ct.SoLuong = cthd.SoLuong;
-                ct.TongTien = cthd.TongTien;
-                ct.TongTienHoaDon = cthd.TongTienHoaDon;
                 ct.NgayLapHoaDon = cthd.NgayLapHoaDon;
+                ct.MaNhanVien = cthd.MaNhanVien;
 
                 db.ChiTietHoaDons.InsertOnSubmit(cthd);
                 db.SubmitChanges();
@@ -60,15 +48,17 @@ namespace API.Controllers
             }
         }
 
+        
+
         [HttpDelete]
         public bool DeleteGio(int id)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                ChiTietHoaDon kh = db.ChiTietHoaDons.Where(t => t.MaHoaDon == id).FirstOrDefault();
+                var kh = db.ChiTietHoaDons.Where(t => t.MaHoaDon == id).ToList();
 
-                db.ChiTietHoaDons.DeleteOnSubmit(kh);
+                db.ChiTietHoaDons.DeleteAllOnSubmit(kh);
                 db.SubmitChanges();
                 return true;
             }
@@ -77,5 +67,7 @@ namespace API.Controllers
                 return false;
             }
         }
+
+
     }
 }
