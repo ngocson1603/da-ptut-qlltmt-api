@@ -18,12 +18,12 @@ namespace API.Controllers
             var query = from c in chitiet
                         join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
                         from sp in table1.DefaultIfEmpty()
-                        select new BieuMau { TenSanPham = sp.tensp, SoLuong = sp.soluong, TongTien = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail };
+                        select new BieuMau { tensp = sp.tensp, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail,MaHoaDon=c.MaHoaDon, TongTien = sp.TongTien };
             return Ok(query);
         }
 
         [HttpGet]
-        public IHttpActionResult GetBieuMauGioLists(string id)
+        public IHttpActionResult GetBieuMauGioListss(string id,int ma)
         {
             QLLKDataContext db = new QLLKDataContext();
             List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
@@ -31,8 +31,8 @@ namespace API.Controllers
             var query = from c in chitiet
                         join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
                         from sp in table1.DefaultIfEmpty()
-                        where c.Gmail == id.ToString()
-                        select new BieuMau { TenSanPham = sp.tensp, SoLuong = sp.soluong, TongTien = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail };
+                        where c.Gmail == id.ToString() && c.MaHoaDon == ma
+                        select new BieuMau { tensp = sp.tensp, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail, MaHoaDon = c.MaHoaDon, TongTien = sp.TongTien };
 
             return Ok(query);
         }

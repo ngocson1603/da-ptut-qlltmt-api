@@ -16,19 +16,6 @@
       <Association Name="KhachHang_ChiTietHoaDon" Member="KhachHang" ThisKey="Gmail" OtherKey="Gmail" Type="KhachHang" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.ChiTietHoaDonSanPham" Member="ChiTietHoaDonSanPhams">
-    <Type Name="ChiTietHoaDonSanPham">
-      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="tensp" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="tenloai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="tenhang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="giaban" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="hinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="ChiTietHoaDon_ChiTietHoaDonSanPham" Member="ChiTietHoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="ChiTietHoaDon" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.ChiTietPhieuNhap" Member="ChiTietPhieuNhaps">
     <Type Name="ChiTietPhieuNhap">
       <Column Name="MaPhieuNhap" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -136,8 +123,23 @@
       <Column Name="tenhang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="giaban" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="hinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ChiTietHoaDonSanPham" Member="ChiTietHoaDonSanPhams">
+    <Type Name="ChiTietHoaDonSanPham">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="tensp" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tenloai" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="tenhang" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="giaban" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="soluong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="hinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="ChiTietHoaDon_ChiTietHoaDonSanPham" Member="ChiTietHoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="ChiTietHoaDon" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

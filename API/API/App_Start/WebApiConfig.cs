@@ -14,7 +14,12 @@ namespace API
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                defaults: new { id = RouteParameter.Optional}
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "BieuMauGioListss",
+                routeTemplate: "api/{controller}/{id}/{ma}"
             );
 
             var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;

@@ -39,6 +39,7 @@ namespace API.Controllers
                 ct.tenhang = cthd.tenhang;
                 ct.giaban = cthd.giaban;
                 ct.soluong = cthd.soluong;
+                ct.TongTien = cthd.TongTien;
                 ct.hinh = cthd.hinh;
                 ct.MaSanPham = cthd.MaSanPham;
                 db.ChiTietHoaDonSanPhams.InsertOnSubmit(cthd);
