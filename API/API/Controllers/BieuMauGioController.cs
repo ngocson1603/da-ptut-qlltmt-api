@@ -14,25 +14,37 @@ namespace API.Controllers
         {
             QLLKDataContext db = new QLLKDataContext();
             List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<ChiTietHoaDonSanPham> sanpham = db.ChiTietHoaDonSanPhams.ToList();
+            List<HoaDon> hoadon = db.HoaDons.ToList();
+            List<SanPham> sanpham = db.SanPhams.ToList();
+            List<KhachHang> khachhang = db.KhachHangs.ToList();
             var query = from c in chitiet
-                        join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
-                        from sp in table1.DefaultIfEmpty()
-                        select new BieuMau { tensp = sp.tensp, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail,MaHoaDon=c.MaHoaDon, TongTien = sp.TongTien };
+                        join hd in hoadon on c.MaHoaDon equals hd.MaHoaDon into table1
+                        from hd in table1.DefaultIfEmpty()
+                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table2
+                        from sp in table2.DefaultIfEmpty()
+                        join kh in khachhang on hd.MaKH equals kh.MaKH into table3
+                        from kh in table3.DefaultIfEmpty()
+                        select new BieuMau { TenSanPham = sp.TenSanPham, soluong = c.soluong, giaban = c.giaban, NgayLapHoaDon = hd.NgayLapHoaDon,MaHoaDon = c.MaHoaDon, TongTien = c.TongTien,MaKH=kh.MaKH };
             return Ok(query);
         }
 
         [HttpGet]
-        public IHttpActionResult GetBieuMauGioListss(string id,int ma)
+        public IHttpActionResult GetBieuMauGioListss(int id, int ma)
         {
             QLLKDataContext db = new QLLKDataContext();
             List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<ChiTietHoaDonSanPham> sanpham = db.ChiTietHoaDonSanPhams.ToList();
+            List<HoaDon> hoadon = db.HoaDons.ToList();
+            List<SanPham> sanpham = db.SanPhams.ToList();
+            List<KhachHang> khachhang = db.KhachHangs.ToList();
             var query = from c in chitiet
-                        join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
-                        from sp in table1.DefaultIfEmpty()
-                        where c.Gmail == id.ToString() && c.MaHoaDon == ma
-                        select new BieuMau { tensp = sp.tensp, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, Gmail = c.Gmail, MaHoaDon = c.MaHoaDon, TongTien = sp.TongTien };
+                        join hd in hoadon on c.MaHoaDon equals hd.MaHoaDon into table1
+                        from hd in table1.DefaultIfEmpty()
+                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table2
+                        from sp in table2.DefaultIfEmpty()
+                        join kh in khachhang on hd.MaKH equals kh.MaKH into table3
+                        from kh in table3.DefaultIfEmpty()
+                        where kh.MaKH == id && c.MaHoaDon == ma
+                        select new BieuMau { TenSanPham = sp.TenSanPham, soluong = c.soluong, giaban = c.giaban, NgayLapHoaDon = hd.NgayLapHoaDon, MaHoaDon = c.MaHoaDon, TongTien = c.TongTien, MaKH = kh.MaKH };
 
             return Ok(query);
         }

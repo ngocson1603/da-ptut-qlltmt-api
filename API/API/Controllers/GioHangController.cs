@@ -19,26 +19,26 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<View_CTHD> GetHDListsgio(string id)
+        public List<View_CTHD> GetHDListsgio(int id)
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_CTHDs.Where(t => t.Gmail == id).ToList();
+            return db.View_CTHDs.Where(t => t.MaKH == id).ToList();
         }
         [HttpPost]
-        public bool InsertNewGio(ChiTietHoaDon cthd)
+        public bool InsertNewGio(HoaDon cthd)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
 
-                ChiTietHoaDon ct = new ChiTietHoaDon();
+                HoaDon ct = new HoaDon();
                 ct.MaHoaDon = cthd.MaHoaDon;
-                ct.Gmail = cthd.Gmail;
+                ct.MaKH = cthd.MaKH;
                 ct.NgayLapHoaDon = cthd.NgayLapHoaDon;
                 ct.MaNhanVien = cthd.MaNhanVien;
 
-                db.ChiTietHoaDons.InsertOnSubmit(cthd);
+                db.HoaDons.InsertOnSubmit(cthd);
                 db.SubmitChanges();
                 return true;
             }

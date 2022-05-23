@@ -7,12 +7,12 @@ namespace API
 {
     public class BieuMau
     {
-        public string tensp { get; set; }
+        public string TenSanPham { get; set; }
         public int? soluong { get; set; }
         public int? giaban { get; set; }
         public DateTime? NgayLapHoaDon { get; set; }
-        public string Gmail { get; set; }
         public int MaHoaDon { get; set; }
         public int? TongTien { get; set; }
+        public int MaKH { get; set; }
     }
 }

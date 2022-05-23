@@ -26,23 +26,19 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public bool InsertNewGioCTHD(ChiTietHoaDonSanPham cthd)
+        public bool InsertNewGioCTHD(ChiTietHoaDon cthd)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
 
-                ChiTietHoaDonSanPham ct = new ChiTietHoaDonSanPham();
+                ChiTietHoaDon ct = new ChiTietHoaDon();
                 ct.MaHoaDon = cthd.MaHoaDon;
-                ct.tensp = cthd.tensp;
-                ct.tenloai = cthd.tenloai;
-                ct.tenhang = cthd.tenhang;
+                ct.MaSanPham = cthd.MaSanPham;
                 ct.giaban = cthd.giaban;
                 ct.soluong = cthd.soluong;
                 ct.TongTien = cthd.TongTien;
-                ct.hinh = cthd.hinh;
-                ct.MaSanPham = cthd.MaSanPham;
-                db.ChiTietHoaDonSanPhams.InsertOnSubmit(cthd);
+                db.ChiTietHoaDons.InsertOnSubmit(cthd);
                 db.SubmitChanges();
                 return true;
             }
@@ -58,9 +54,9 @@ namespace API.Controllers
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                var kh = db.ChiTietHoaDonSanPhams.Where(t => t.MaHoaDon == id).ToList();
+                var kh = db.ChiTietHoaDons.Where(t => t.MaHoaDon == id).ToList();
 
-                db.ChiTietHoaDonSanPhams.DeleteAllOnSubmit(kh);
+                db.ChiTietHoaDons.DeleteAllOnSubmit(kh);
                 db.SubmitChanges();
                 return true;
             }

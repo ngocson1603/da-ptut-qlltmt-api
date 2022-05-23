@@ -14,11 +14,20 @@ namespace API.Controllers
         {
             QLLKDataContext db = new QLLKDataContext();
             List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<ChiTietHoaDonSanPham> sanpham = db.ChiTietHoaDonSanPhams.ToList();
+            List<HoaDon> hoadon = db.HoaDons.ToList();
+            List<SanPham> sanpham = db.SanPhams.ToList();
+            List<KhachHang> khachhang = db.KhachHangs.ToList();
+            List<LoaiSanPham> loaisp = db.LoaiSanPhams.ToList();
             var query = from c in chitiet
-                        join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
-                        from sp in table1.DefaultIfEmpty()
-                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = sp.MaSanPham, Gmail = c.Gmail, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, hinh = sp.hinh };
+                        join hd in hoadon on c.MaHoaDon equals hd.MaHoaDon into table1
+                        from hd in table1.DefaultIfEmpty()
+                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table2
+                        from sp in table2.DefaultIfEmpty()
+                        join kh in khachhang on hd.MaKH equals kh.MaKH into table3
+                        from kh in table3.DefaultIfEmpty()
+                        join lsp in loaisp on sp.LoaiSanPham equals lsp.MaLoaiSanPham into table4
+                        from lsp in table4.DefaultIfEmpty()
+                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = sp.MaSanPham, MaKH = kh.MaKH,TenSanPham = sp.TenSanPham,TenLoaiSanPham = lsp.TenLoaiSanPham, soluong = c.soluong, giaban = c.giaban, NgayLapHoaDon = hd.NgayLapHoaDon, Image = sp.Image };
             return Ok(query);
         }
 
@@ -27,12 +36,21 @@ namespace API.Controllers
         {
             QLLKDataContext db = new QLLKDataContext();
             List<ChiTietHoaDon> chitiet = db.ChiTietHoaDons.ToList();
-            List<ChiTietHoaDonSanPham> sanpham = db.ChiTietHoaDonSanPhams.ToList();
+            List<HoaDon> hoadon = db.HoaDons.ToList();
+            List<SanPham> sanpham = db.SanPhams.ToList();
+            List<KhachHang> khachhang = db.KhachHangs.ToList();
+            List<LoaiSanPham> loaisp = db.LoaiSanPhams.ToList();
             var query = from c in chitiet
-                        join sp in sanpham on c.MaHoaDon equals sp.MaHoaDon into table1
-                        from sp in table1.DefaultIfEmpty()
-                        where c.Gmail == id.ToString()
-                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = sp.MaSanPham, Gmail = c.Gmail, soluong = sp.soluong, giaban = sp.giaban, NgayLapHoaDon = c.NgayLapHoaDon, hinh = sp.hinh };
+                        join hd in hoadon on c.MaHoaDon equals hd.MaHoaDon into table1
+                        from hd in table1.DefaultIfEmpty()
+                        join sp in sanpham on c.MaSanPham equals sp.MaSanPham into table2
+                        from sp in table2.DefaultIfEmpty()
+                        join kh in khachhang on hd.MaKH equals kh.MaKH into table3
+                        from kh in table3.DefaultIfEmpty()
+                        join lsp in loaisp on sp.LoaiSanPham equals lsp.MaLoaiSanPham into table4
+                        from lsp in table4.DefaultIfEmpty()
+                        where kh.Gmail == id.ToString()
+                        select new LayGio { MaHoaDon = c.MaHoaDon, MaSanPham = sp.MaSanPham, MaKH = kh.MaKH, TenSanPham = sp.TenSanPham, TenLoaiSanPham = lsp.TenLoaiSanPham, soluong = c.soluong, giaban = c.giaban, NgayLapHoaDon = hd.NgayLapHoaDon, Image = sp.Image };
             return Ok(query);
         }
     }

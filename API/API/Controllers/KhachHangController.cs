@@ -26,12 +26,12 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public bool UpdateKhachHang(KhachHang kh, string id)
+        public bool UpdateKhachHang(KhachHang kh, int id)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                KhachHang khs = db.KhachHangs.Where(t => t.Gmail == id).FirstOrDefault();
+                KhachHang khs = db.KhachHangs.Where(t => t.MaKH == id).FirstOrDefault();
                 khs.Gmail = kh.Gmail;
                 khs.Pass = kh.Pass;
                 khs.TenKhachHang = kh.TenKhachHang;
