@@ -91,10 +91,15 @@
     <Compile Include="BieuMau.cs" />
     <Compile Include="Controllers\BieuMauGioController.cs" />
     <Compile Include="Controllers\ChiTietHoaDonSPController.cs" />
+    <Compile Include="Controllers\CTPNController.cs" />
     <Compile Include="Controllers\DangNhapController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\HDController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\PhieuNhapController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
