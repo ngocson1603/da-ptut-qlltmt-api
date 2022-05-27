@@ -17,13 +17,13 @@ namespace API.Controllers
             return db.View_NhanViens.ToList();
         }
 
-        //[HttpGet]
-        //public List<View_NhanVien> GetNhanVien(string id)
-        //{
-        //    QLLKDataContext db = new QLLKDataContext();
+        [HttpGet]
+        public List<View_NhanVien> GetNhanVien(int id)
+        {
+            QLLKDataContext db = new QLLKDataContext();
 
-        //    return db.View_NhanViens.Where(t => t.MaNhanVien == id).ToList();
-        //}
+            return db.View_NhanViens.Where(t => t.MaNhanVien == id).ToList();
+        }
 
         [HttpPut]
         public bool UpdateNhanVien(NhanVien kh, int id)
@@ -32,7 +32,7 @@ namespace API.Controllers
             {
                 QLLKDataContext db = new QLLKDataContext();
                 NhanVien khs = db.NhanViens.Where(t => t.MaNhanVien == id).FirstOrDefault();
-                khs.MaNhanVien = kh.MaNhanVien;
+               // khs.MaNhanVien = kh.MaNhanVien;
                 khs.TenNhanVien = kh.TenNhanVien;
                 khs.NgaySinh = kh.NgaySinh;
                 khs.GioiTinh = kh.GioiTinh;
@@ -56,7 +56,7 @@ namespace API.Controllers
             {
                 QLLKDataContext db = new QLLKDataContext();
                 NhanVien khs = new NhanVien();
-                khs.MaNhanVien = kh.MaNhanVien;
+               // khs.MaNhanVien = kh.MaNhanVien;
                 khs.TenNhanVien = kh.TenNhanVien;
                 khs.NgaySinh = kh.NgaySinh;
                 khs.GioiTinh = kh.GioiTinh;
