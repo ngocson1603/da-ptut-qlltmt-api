@@ -74,8 +74,7 @@ namespace API.Controllers
             {
                 QLLKDataContext db = new QLLKDataContext();
                 HoaDon khs = db.HoaDons.Where(t => t.MaHoaDon == id).FirstOrDefault();
-                //khs.MaSanPham = sp.MaSanPham;
-                khs.MaHoaDon = sp.MaHoaDon;
+
                 khs.MaKH = sp.MaKH;
                 khs.NgayLapHoaDon = sp.NgayLapHoaDon;
                 khs.MaNhanVien = sp.MaNhanVien;

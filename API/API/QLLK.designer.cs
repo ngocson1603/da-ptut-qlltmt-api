@@ -227,6 +227,30 @@ namespace API
 				return this.GetTable<ChiTietPhieuNhap>();
 			}
 		}
+		
+		public System.Data.Linq.Table<View_LSP> View_LSPs
+		{
+			get
+			{
+				return this.GetTable<View_LSP>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_HSX> View_HSXes
+		{
+			get
+			{
+				return this.GetTable<View_HSX>();
+			}
+		}
+		
+		public System.Data.Linq.Table<View_NPP> View_NPPs
+		{
+			get
+			{
+				return this.GetTable<View_NPP>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.KhachHang")]
@@ -3203,6 +3227,195 @@ namespace API
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_LSP")]
+	public partial class View_LSP
+	{
+		
+		private int _MaLoaiSanPham;
+		
+		private string _TenLoaiSanPham;
+		
+		public View_LSP()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaLoaiSanPham", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MaLoaiSanPham
+		{
+			get
+			{
+				return this._MaLoaiSanPham;
+			}
+			set
+			{
+				if ((this._MaLoaiSanPham != value))
+				{
+					this._MaLoaiSanPham = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenLoaiSanPham", DbType="NVarChar(50)")]
+		public string TenLoaiSanPham
+		{
+			get
+			{
+				return this._TenLoaiSanPham;
+			}
+			set
+			{
+				if ((this._TenLoaiSanPham != value))
+				{
+					this._TenLoaiSanPham = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_HSX")]
+	public partial class View_HSX
+	{
+		
+		private int _MaHangSanXuat;
+		
+		private string _TenHangSanXuat;
+		
+		public View_HSX()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaHangSanXuat", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MaHangSanXuat
+		{
+			get
+			{
+				return this._MaHangSanXuat;
+			}
+			set
+			{
+				if ((this._MaHangSanXuat != value))
+				{
+					this._MaHangSanXuat = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenHangSanXuat", DbType="NVarChar(50)")]
+		public string TenHangSanXuat
+		{
+			get
+			{
+				return this._TenHangSanXuat;
+			}
+			set
+			{
+				if ((this._TenHangSanXuat != value))
+				{
+					this._TenHangSanXuat = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.View_NPP")]
+	public partial class View_NPP
+	{
+		
+		private int _MaNhaPhanPhoi;
+		
+		private string _TenNhaPhanPhoi;
+		
+		private string _DiaChi;
+		
+		private string _SDT;
+		
+		private string _Email;
+		
+		public View_NPP()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaNhaPhanPhoi", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
+		public int MaNhaPhanPhoi
+		{
+			get
+			{
+				return this._MaNhaPhanPhoi;
+			}
+			set
+			{
+				if ((this._MaNhaPhanPhoi != value))
+				{
+					this._MaNhaPhanPhoi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TenNhaPhanPhoi", DbType="NVarChar(50)")]
+		public string TenNhaPhanPhoi
+		{
+			get
+			{
+				return this._TenNhaPhanPhoi;
+			}
+			set
+			{
+				if ((this._TenNhaPhanPhoi != value))
+				{
+					this._TenNhaPhanPhoi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DiaChi", DbType="NVarChar(50)")]
+		public string DiaChi
+		{
+			get
+			{
+				return this._DiaChi;
+			}
+			set
+			{
+				if ((this._DiaChi != value))
+				{
+					this._DiaChi = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SDT", DbType="VarChar(11)")]
+		public string SDT
+		{
+			get
+			{
+				return this._SDT;
+			}
+			set
+			{
+				if ((this._SDT != value))
+				{
+					this._SDT = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this._Email = value;
+				}
 			}
 		}
 	}

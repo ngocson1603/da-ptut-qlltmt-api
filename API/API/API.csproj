@@ -96,8 +96,12 @@
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HDController.cs" />
     <Compile Include="Controllers\HoaDonController.cs" />
+    <Compile Include="Controllers\HSXController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\LoadHDNVController.cs" />
+    <Compile Include="Controllers\LSPController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\NPPController.cs" />
     <Compile Include="Controllers\PhieuNhapController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Global.asax.cs">

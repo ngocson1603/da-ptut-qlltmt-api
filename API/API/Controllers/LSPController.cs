@@ -7,22 +7,22 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
-    public class KhachHangController : ApiController
+    public class LSPController : ApiController
     {
         [HttpGet]
-        public List<View_KH> GetKhachHangLists()
+        public List<View_LSP> GetLSPLists()
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_KHs.ToList();
+            return db.View_LSPs.ToList();
         }
 
         [HttpGet]
-        public List<View_KH> GetKhachHang(int id)
+        public List<View_LSP> GetLSPLists(int id)
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_KHs.Where(t => t.MaKH == id).ToList();
+            return db.View_LSPs.Where(t => t.MaLoaiSanPham == id).ToList();
         }
 
         [HttpPut]
