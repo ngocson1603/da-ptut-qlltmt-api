@@ -26,19 +26,13 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public bool UpdateKhachHang(KhachHang kh, int id)
+        public bool UpdateLSP(LoaiSanPham kh, int id)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                KhachHang khs = db.KhachHangs.Where(t => t.MaKH == id).FirstOrDefault();
-                khs.Gmail = kh.Gmail;
-                khs.Pass = kh.Pass;
-                khs.TenKhachHang = kh.TenKhachHang;
-                khs.Ngaysinh = kh.Ngaysinh;
-                khs.GioiTinh = kh.GioiTinh;
-                khs.DiaChi = kh.DiaChi;
-                khs.SDT = kh.SDT;
+                LoaiSanPham khs = db.LoaiSanPhams.Where(t => t.MaLoaiSanPham == id).FirstOrDefault();
+                khs.TenLoaiSanPham = kh.TenLoaiSanPham;
                 db.SubmitChanges();
                 return true;
             }
@@ -48,21 +42,14 @@ namespace API.Controllers
             }
         }
         [HttpPost]
-        public bool InsertKhachHang(KhachHang kh)
+        public bool InsertLSP(LoaiSanPham kh)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                KhachHang khs = new KhachHang();
-                khs.Gmail = kh.Gmail;
-                khs.Pass = kh.Pass;
-                khs.TenKhachHang = kh.TenKhachHang;
-                khs.Ngaysinh = kh.Ngaysinh;
-                khs.GioiTinh = kh.GioiTinh;
-                khs.DiaChi = kh.DiaChi;
-                khs.SDT = kh.SDT;
-
-                db.KhachHangs.InsertOnSubmit(kh);
+                LoaiSanPham khs = new LoaiSanPham();
+                khs.TenLoaiSanPham = kh.TenLoaiSanPham;
+                db.LoaiSanPhams.InsertOnSubmit(kh);
                 db.SubmitChanges();
                 return true;
             }
@@ -73,14 +60,14 @@ namespace API.Controllers
         }
 
         [HttpDelete]
-        public bool DeleteKhachHang(int id)
+        public bool DeleteLSP(int id)
         {
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                var kh = db.KhachHangs.Where(t => t.MaKH == id).FirstOrDefault();
+                var kh = db.LoaiSanPhams.Where(t => t.MaLoaiSanPham == id).FirstOrDefault();
 
-                db.KhachHangs.DeleteOnSubmit(kh);
+                db.LoaiSanPhams.DeleteOnSubmit(kh);
                 db.SubmitChanges();
                 return true;
             }
