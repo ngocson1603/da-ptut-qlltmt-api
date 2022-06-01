@@ -208,4 +208,28 @@
       <Association Name="NhaPhanPhoi_PhieuNhap" Member="PhieuNhaps" ThisKey="MaNhaPhanPhoi" OtherKey="MaNhaPhanPhoi" Type="PhieuNhap" />
     </Type>
   </Table>
+  <Table Name="dbo.TinhTrangOne" Member="TinhTrangOnes">
+    <Type Name="TinhTrangOne">
+      <Column Name="TenTinhTrangOne" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_TinhTrangTwo" Member="View_TinhTrangTwos">
+    <Type Name="View_TinhTrangTwo">
+      <Column Name="TenTinhTrangOne" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TenTinhTrangTwo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_TinhTrangThree" Member="View_TinhTrangThrees">
+    <Type Name="View_TinhTrangThree">
+      <Column Name="TenTinhTrangOne" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TenTinhTrangTwo" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="TenTinhTrangThree" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_Anh" Member="View_Anhs">
+    <Type Name="View_Anh">
+      <Column Name="KetQua" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Anh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

@@ -104,6 +104,9 @@
     <Compile Include="Controllers\NPPController.cs" />
     <Compile Include="Controllers\PhieuNhapController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\TT1Controller.cs" />
+    <Compile Include="Controllers\TT2Controller.cs" />
+    <Compile Include="Controllers\TT3Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
