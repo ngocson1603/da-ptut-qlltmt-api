@@ -56,9 +56,9 @@ namespace API.Controllers
             try
             {
                 QLLKDataContext db = new QLLKDataContext();
-                var kh = db.ChiTietHoaDons.Where(t => t.MaHoaDon == id).FirstOrDefault();
+                var kh = db.HoaDons.Where(t => t.MaHoaDon == id).FirstOrDefault();
 
-                db.ChiTietHoaDons.DeleteOnSubmit(kh);
+                db.HoaDons.DeleteOnSubmit(kh);
                 db.SubmitChanges();
                 return true;
             }

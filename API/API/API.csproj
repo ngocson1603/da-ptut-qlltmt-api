@@ -99,6 +99,7 @@
     <Compile Include="Controllers\HSXController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LoadHDNVController.cs" />
+    <Compile Include="Controllers\LoadPNNVController.cs" />
     <Compile Include="Controllers\LSPController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\NPPController.cs" />
