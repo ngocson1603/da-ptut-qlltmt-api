@@ -54,21 +54,6 @@
       <Association Name="KhachHang_HoaDon" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.SanPham" Member="SanPhams">
-    <Type Name="SanPham">
-      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="LoaiSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HangSanXuat" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="SanPham_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietHoaDon" />
-      <Association Name="SanPham_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietPhieuNhap" />
-      <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham1" ThisKey="LoaiSanPham" OtherKey="MaLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
-      <Association Name="HangSanXuat_SanPham" Member="HangSanXuat1" ThisKey="HangSanXuat" OtherKey="MaHangSanXuat" Type="HangSanXuat" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.LoaiSanPham" Member="LoaiSanPhams">
     <Type Name="LoaiSanPham">
       <Column Name="MaLoaiSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -99,17 +84,6 @@
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Quyen" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="NhanVien_User" Member="NhanVien" ThisKey="MaNhanVien" OtherKey="MaNhanVien" Type="NhanVien" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.View_SanPham" Member="View_SanPhams">
-    <Type Name="View_SanPham">
-      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="LoaiSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="HangSanXuat" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.NhanVien" Member="NhanViens">
@@ -230,6 +204,34 @@
     <Type Name="View_Anh">
       <Column Name="KetQua" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="Anh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_SanPham" Member="View_SanPhams">
+    <Type Name="View_SanPham">
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LoaiSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HangSanXuat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HSD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SanPham" Member="SanPhams">
+    <Type Name="SanPham">
+      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenSanPham" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="LoaiSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HangSanXuat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HSD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TonKho" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="SanPham_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietHoaDon" />
+      <Association Name="SanPham_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietPhieuNhap" />
+      <Association Name="HangSanXuat_SanPham" Member="HangSanXuat1" ThisKey="HangSanXuat" OtherKey="MaHangSanXuat" Type="HangSanXuat" IsForeignKey="true" />
+      <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham1" ThisKey="LoaiSanPham" OtherKey="MaLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

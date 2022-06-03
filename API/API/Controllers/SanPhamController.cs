@@ -29,6 +29,7 @@ namespace API.Controllers
                 khs.TenSanPham = sp.TenSanPham;
                 khs.LoaiSanPham = sp.LoaiSanPham;
                 khs.HangSanXuat = sp.HangSanXuat;
+                khs.HSD = sp.HSD;
                 khs.GiaBan = sp.GiaBan;
                 khs.TonKho = sp.TonKho;
                 khs.Image = sp.Image;
@@ -73,6 +74,7 @@ namespace API.Controllers
                 khs.TenSanPham = sp.TenSanPham;
                 khs.LoaiSanPham = sp.LoaiSanPham;
                 khs.HangSanXuat = sp.HangSanXuat;
+                khs.HSD = sp.HSD;
                 khs.GiaBan = sp.GiaBan;
                 khs.TonKho = sp.TonKho;
                 khs.Image = sp.Image;
