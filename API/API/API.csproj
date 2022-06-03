@@ -89,6 +89,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="BieuMau.cs" />
+    <Compile Include="Controllers\BaoHanhController.cs" />
+    <Compile Include="Controllers\BaoHanhCTController.cs" />
     <Compile Include="Controllers\BieuMauGioController.cs" />
     <Compile Include="Controllers\ChiTietHoaDonSPController.cs" />
     <Compile Include="Controllers\CTPNController.cs" />
