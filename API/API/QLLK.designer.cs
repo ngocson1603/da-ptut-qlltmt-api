@@ -72,6 +72,9 @@ namespace API
     partial void InsertCTBaoHanh(CTBaoHanh instance);
     partial void UpdateCTBaoHanh(CTBaoHanh instance);
     partial void DeleteCTBaoHanh(CTBaoHanh instance);
+    partial void InsertSeriHD(SeriHD instance);
+    partial void UpdateSeriHD(SeriHD instance);
+    partial void DeleteSeriHD(SeriHD instance);
     #endregion
 		
 		public QLLKDataContext() : 
@@ -333,6 +336,14 @@ namespace API
 			get
 			{
 				return this.GetTable<CTBaoHanh>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SeriHD> SeriHDs
+		{
+			get
+			{
+				return this.GetTable<SeriHD>();
 			}
 		}
 	}
@@ -1087,6 +1098,8 @@ namespace API
 		
 		private EntitySet<BaoHanh> _BaoHanhs;
 		
+		private EntitySet<SeriHD> _SeriHDs;
+		
 		private EntityRef<KhachHang> _KhachHang;
 		
     #region Extensibility Method Definitions
@@ -1107,6 +1120,7 @@ namespace API
 		{
 			this._ChiTietHoaDons = new EntitySet<ChiTietHoaDon>(new Action<ChiTietHoaDon>(this.attach_ChiTietHoaDons), new Action<ChiTietHoaDon>(this.detach_ChiTietHoaDons));
 			this._BaoHanhs = new EntitySet<BaoHanh>(new Action<BaoHanh>(this.attach_BaoHanhs), new Action<BaoHanh>(this.detach_BaoHanhs));
+			this._SeriHDs = new EntitySet<SeriHD>(new Action<SeriHD>(this.attach_SeriHDs), new Action<SeriHD>(this.detach_SeriHDs));
 			this._KhachHang = default(EntityRef<KhachHang>);
 			OnCreated();
 		}
@@ -1221,6 +1235,19 @@ namespace API
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_SeriHD", Storage="_SeriHDs", ThisKey="MaHoaDon", OtherKey="MaHoaDon")]
+		public EntitySet<SeriHD> SeriHDs
+		{
+			get
+			{
+				return this._SeriHDs;
+			}
+			set
+			{
+				this._SeriHDs.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="KhachHang_HoaDon", Storage="_KhachHang", ThisKey="MaKH", OtherKey="MaKH", IsForeignKey=true)]
 		public KhachHang KhachHang
 		{
@@ -1294,6 +1321,18 @@ namespace API
 		}
 		
 		private void detach_BaoHanhs(BaoHanh entity)
+		{
+			this.SendPropertyChanging();
+			entity.HoaDon = null;
+		}
+		
+		private void attach_SeriHDs(SeriHD entity)
+		{
+			this.SendPropertyChanging();
+			entity.HoaDon = this;
+		}
+		
+		private void detach_SeriHDs(SeriHD entity)
 		{
 			this.SendPropertyChanging();
 			entity.HoaDon = null;
@@ -4669,6 +4708,133 @@ namespace API
 						this._MaSanPham = default(int);
 					}
 					this.SendPropertyChanged("SanPham");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SeriHD")]
+	public partial class SeriHD : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _Seri;
+		
+		private int _MaHoaDon;
+		
+		private EntityRef<HoaDon> _HoaDon;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSeriChanging(string value);
+    partial void OnSeriChanged();
+    partial void OnMaHoaDonChanging(int value);
+    partial void OnMaHoaDonChanged();
+    #endregion
+		
+		public SeriHD()
+		{
+			this._HoaDon = default(EntityRef<HoaDon>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Seri", DbType="NVarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string Seri
+		{
+			get
+			{
+				return this._Seri;
+			}
+			set
+			{
+				if ((this._Seri != value))
+				{
+					this.OnSeriChanging(value);
+					this.SendPropertyChanging();
+					this._Seri = value;
+					this.SendPropertyChanged("Seri");
+					this.OnSeriChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaHoaDon", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MaHoaDon
+		{
+			get
+			{
+				return this._MaHoaDon;
+			}
+			set
+			{
+				if ((this._MaHoaDon != value))
+				{
+					if (this._HoaDon.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMaHoaDonChanging(value);
+					this.SendPropertyChanging();
+					this._MaHoaDon = value;
+					this.SendPropertyChanged("MaHoaDon");
+					this.OnMaHoaDonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HoaDon_SeriHD", Storage="_HoaDon", ThisKey="MaHoaDon", OtherKey="MaHoaDon", IsForeignKey=true)]
+		public HoaDon HoaDon
+		{
+			get
+			{
+				return this._HoaDon.Entity;
+			}
+			set
+			{
+				HoaDon previousValue = this._HoaDon.Entity;
+				if (((previousValue != value) 
+							|| (this._HoaDon.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._HoaDon.Entity = null;
+						previousValue.SeriHDs.Remove(this);
+					}
+					this._HoaDon.Entity = value;
+					if ((value != null))
+					{
+						value.SeriHDs.Add(this);
+						this._MaHoaDon = value.MaHoaDon;
+					}
+					else
+					{
+						this._MaHoaDon = default(int);
+					}
+					this.SendPropertyChanged("HoaDon");
 				}
 			}
 		}

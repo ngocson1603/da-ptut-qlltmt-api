@@ -52,6 +52,7 @@
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="HoaDon_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="ChiTietHoaDon" />
       <Association Name="HoaDon_BaoHanh" Member="BaoHanhs" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="BaoHanh" />
+      <Association Name="HoaDon_SeriHD" Member="SeriHDs" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="SeriHD" />
       <Association Name="KhachHang_HoaDon" Member="KhachHang" ThisKey="MaKH" OtherKey="MaKH" Type="KhachHang" IsForeignKey="true" />
     </Type>
   </Table>
@@ -272,6 +273,13 @@
       <Column Name="LyDo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="BaoHanh_CTBaoHanh" Member="BaoHanh" ThisKey="MaBH" OtherKey="MaBH" Type="BaoHanh" IsForeignKey="true" />
       <Association Name="SanPham_CTBaoHanh" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SeriHD" Member="SeriHDs">
+    <Type Name="SeriHD">
+      <Column Name="Seri" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="HoaDon_SeriHD" Member="HoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="HoaDon" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
