@@ -33,8 +33,7 @@ namespace API.Controllers
                 QLLKDataContext db = new QLLKDataContext();
                 CTBaoHanh khs = new CTBaoHanh();
                 khs.MaBH = kh.MaBH;
-                khs.MaSanPham = kh.MaSanPham;
-                khs.SoLuong = kh.SoLuong;
+                khs.Seri = kh.Seri;
                 khs.LyDo = kh.LyDo;
                 db.CTBaoHanhs.InsertOnSubmit(kh);
                 db.SubmitChanges();

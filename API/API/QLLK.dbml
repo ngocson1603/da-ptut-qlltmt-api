@@ -233,7 +233,6 @@
       <Column Name="Image" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Association Name="SanPham_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietHoaDon" />
       <Association Name="SanPham_ChiTietPhieuNhap" Member="ChiTietPhieuNhaps" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="ChiTietPhieuNhap" />
-      <Association Name="SanPham_CTBaoHanh" Member="CTBaoHanhs" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="CTBaoHanh" />
       <Association Name="HangSanXuat_SanPham" Member="HangSanXuat1" ThisKey="HangSanXuat" OtherKey="MaHangSanXuat" Type="HangSanXuat" IsForeignKey="true" />
       <Association Name="LoaiSanPham_SanPham" Member="LoaiSanPham1" ThisKey="LoaiSanPham" OtherKey="MaLoaiSanPham" Type="LoaiSanPham" IsForeignKey="true" />
     </Type>
@@ -244,14 +243,6 @@
       <Column Name="NgayLap" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="MaNhanVien" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="MaHoaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.View_BaoHanhCT" Member="View_BaoHanhCTs">
-    <Type Name="View_BaoHanhCT">
-      <Column Name="MaBH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="MaSanPham" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.BaoHanh" Member="BaoHanhs">
@@ -265,21 +256,26 @@
       <Association Name="HoaDon_BaoHanh" Member="HoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="HoaDon" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.CTBaoHanh" Member="CTBaoHanhs">
-    <Type Name="CTBaoHanh">
-      <Column Name="MaBH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MaSanPham" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="LyDo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="BaoHanh_CTBaoHanh" Member="BaoHanh" ThisKey="MaBH" OtherKey="MaBH" Type="BaoHanh" IsForeignKey="true" />
-      <Association Name="SanPham_CTBaoHanh" Member="SanPham" ThisKey="MaSanPham" OtherKey="MaSanPham" Type="SanPham" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.SeriHD" Member="SeriHDs">
     <Type Name="SeriHD">
       <Column Name="Seri" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="HoaDon_SeriHD" Member="HoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="HoaDon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CTBaoHanh" Member="CTBaoHanhs">
+    <Type Name="CTBaoHanh">
+      <Column Name="MaBH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Seri" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="BaoHanh_CTBaoHanh" Member="BaoHanh" ThisKey="MaBH" OtherKey="MaBH" Type="BaoHanh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_BaoHanhCT" Member="View_BaoHanhCTs">
+    <Type Name="View_BaoHanhCT">
+      <Column Name="MaBH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Seri" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LyDo" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
