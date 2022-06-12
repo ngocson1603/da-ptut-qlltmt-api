@@ -37,7 +37,7 @@ namespace API.Controllers
                 khs.MaNhaPhanPhoi = kh.MaNhaPhanPhoi;
                 //khs.TongTien = kh.TongTien;
                 khs.NgayNhap = kh.NgayNhap;
-
+                khs.MaDDH = kh.MaDDH;
                 db.SubmitChanges();
                 return true;
             }
@@ -59,6 +59,7 @@ namespace API.Controllers
                 khs.MaNhaPhanPhoi = kh.MaNhaPhanPhoi;
                // khs.TongTien = kh.TongTien;
                 khs.NgayNhap = kh.NgayNhap;
+                khs.MaDDH = kh.MaDDH;
 
                 db.PhieuNhaps.InsertOnSubmit(kh);
                 db.SubmitChanges();
