@@ -14,7 +14,7 @@ namespace API.Controllers
         {
             QLLKDataContext db = new QLLKDataContext();
 
-            return db.View_KHs.ToList();
+            return db.View_KHs.Where(t=>t.Gmail!=null).ToList();
         }
 
         [HttpGet]
